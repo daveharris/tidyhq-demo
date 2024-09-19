@@ -1,0 +1,19 @@
+<h1>Shorten a URL</h1>
+
+<%= form_with(model: @link) do |form| %>
+  <% if @link.errors.any? %>
+    <p class="notice">
+      <strong>Errors:</strong><br />
+      <%= @link.errors.full_messages.join(', ') %>
+    </p>
+  <% end %>
+
+  <div>
+    <%= form.label :url, 'Enter a URL', style: "display: block" %>
+    <%= form.text_field :url %>
+  </div>
+
+  <div>
+    <%= form.submit 'Shorten' %>
+  </div>
+<% end %>
