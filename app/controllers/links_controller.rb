@@ -9,11 +9,8 @@ class LinksController < ApplicationController
     @link.code = SecureRandom.alphanumeric(6)
 
     if @link.save
-      html_link = view_context.link_to(link_url(id: @link.code), link_url(id: @link.code), target: '_blank')
-
-      copy_button = view_context.content_tag(:button, 'Copy to clipboard', class: "btn", data: { 'clipboard-text' => @link.code })
-
-      redirect_to root_path, notice: "Link was successfully shortened to #{html_link}."
+      redirect_to root_path,
+        notice: "Link was successfully shortened to #{view_context.html_link_for(@link)}."
     else
       render :new, status: :unprocessable_entity
     end
