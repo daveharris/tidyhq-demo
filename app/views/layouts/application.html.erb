@@ -10,7 +10,15 @@
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
 
     <%= javascript_importmap_tags %>
-    <script src="dist/clipboard.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+    <script>
+      document.addEventListener("turbo:render", () => {
+        new ClipboardJS(document.getElementById('copy-target'));
+      });
+    </script>
+
   </head>
 
   <body>

@@ -10,7 +10,7 @@ class LinksController < ApplicationController
 
     if @link.save
       redirect_to root_path,
-        notice: "Link was successfully shortened to #{view_context.html_link_for(@link)}."
+        notice: "Link was successfully shortened to #{view_context.html_link_for(@link)}. #{view_context.copy_to_clipboard_button(@link)}"
     else
       render :new, status: :unprocessable_entity
     end
